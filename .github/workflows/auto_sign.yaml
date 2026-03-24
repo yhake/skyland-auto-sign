@@ -1,4 +1,3 @@
-# run main.py
 name: Auto Sign
 on:
   schedule:
@@ -21,12 +20,11 @@ jobs:
       - name: Run main.py
         env:
           GitHub_Actions: true
-          # 对于多个账号一定会有人机验证问题，且因为是密码，有一定的安全风险
-          # PHONE: ${{ secrets.PHONE }}
-          # PASSWORD: ${{ secrets.PASSWORD }}
           TOKEN: ${{ secrets.TOKEN }}
           SC3_SENDKEY: ${{ secrets.SC3_SENDKEY }}
           SC3_UID: ${{ secrets.SC3_UID }}
           EXIT_WHEN_FAIL: ${{ vars.EXIT_WHEN_FAIL }}
+          FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
+          WECHAT_WEBHOOK: ${{ secrets.WECHAT_WEBHOOK }}
         run: |
           python src/main.py
