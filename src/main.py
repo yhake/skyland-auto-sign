@@ -94,8 +94,3 @@ if __name__ == '__main__':
     logging.info(f'exit_when_fail_env: {exit_when_fail_env}, success: {success}')
     if (exit_when_fail_env == "on") and not success:
         exit(1)
-
-        if response.status_code == 200:
-            print("Bark 通知发送成功")
-    except Exception as e:
-        print(f"Bark 通知异常: {e}")
