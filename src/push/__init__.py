@@ -4,6 +4,8 @@ from configparser import ConfigParser
 from push.serverchan3 import push_serverchan3
 from push.pushplus import push_pushplus
 from push.qmsg import push_qmsg
+from push.feishu import push_feishu          # 新增
+from push.wechat_work import push_wechat_work  # 新增
 
 def load_config_to_env():
     """从config.ini文件加载配置到环境变量"""
@@ -30,6 +32,8 @@ __available_pusher = {
     'serverchan3': push_serverchan3,
     'pushplus': push_pushplus,
     'QMSG': push_qmsg,
+    'feishu': push_feishu,           # 新增
+    'wechat_work': push_wechat_work, # 新增
 }
 
 
