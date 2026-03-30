@@ -1,7 +1,7 @@
 import os
 import requests
 import logging
-from datetime import datetime
+from datetime import timezone, timedelta
 
 def push_wechat_work(all_logs):
     """发送企业微信 Markdown 通知"""
@@ -20,7 +20,9 @@ def push_wechat_work(all_logs):
     if len(content) > 1500:
         content = content[:1500] + "\n...（内容过长已截断）"
     
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    # 东八区 UTC+8
+    beijing_tz = timezone(timedelta(hours=8))
+    timestamp = datetime.now(beijing_tz).strftime("%Y-%m-%d %H:%M:%S")
     
     # 判断签到状态
     if "成功" in content or "签到完成" in content:
