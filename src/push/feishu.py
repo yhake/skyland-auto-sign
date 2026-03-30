@@ -1,7 +1,7 @@
 import os
 import requests
 import logging
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 
 def push_feishu(all_logs):
     """发送飞书交互式卡片通知"""
@@ -19,8 +19,6 @@ def push_feishu(all_logs):
     if len(content) > 1500:
         content = content[:1500] + "\n...（内容过长已截断）"
     
-    from datetime import timezone, timedelta
-
     # 东八区 UTC+8
     beijing_tz = timezone(timedelta(hours=8))
     timestamp = datetime.now(beijing_tz).strftime("%Y-%m-%d %H:%M:%S")
